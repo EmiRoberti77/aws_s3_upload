@@ -4,7 +4,8 @@ import {
   ListObjectsCommand,
 } from '@aws-sdk/client-s3';
 import fs from 'fs';
-import { Settings, UTF8 } from './util';
+import path from 'path';
+import { Settings, UTF8, completedFolder } from './util';
 
 export interface ITransferServiceProps {
   Bucket: string;
