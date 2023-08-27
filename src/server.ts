@@ -23,15 +23,22 @@ app.get(ROOT_ENDPOINT.TRANSFER, (req: Request, res: Response) => {
 });
 
 app.post(ROOT_ENDPOINT.TRANSFER, async (req: Request, res: Response) => {
-  const transfer_wegmans = new TransferService(req.body);
-  await transfer_wegmans.transfer();
-
-  res.status(200).send(
-    JSON.stringify({
-      message: Message.success,
-      body: req.body,
-    })
-  );
+  try {
+    const transfer_wegmans = new TransferService(req.body);
+    await transfer_wegmans.transfer();
+    res.status(200).send(
+      JSON.stringify({
+        message: Message.success,
+        body: req.body,
+      })
+    );
+  } catch (error: any) {
+    res.status(400).send(
+      JSON.stringify({
+        error: error.message,
+      })
+    );
+  }
   res.end();
 });
 
