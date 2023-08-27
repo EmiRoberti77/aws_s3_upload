@@ -60,7 +60,10 @@ export class TransferService {
       const params = {
         Bucket: this.clientCredential.bucket,
         Key: `${this.clientCredential.folder}/${file}`,
-        Body: `${this.clientCredential.source_dir}/${file}`,
+        Body: fs.readFileSync(
+          path.join(this.clientCredential.source_dir, file),
+          UTF8
+        ),
       };
       console.log('Current CSV processing', params);
       try {
