@@ -6,6 +6,7 @@ import {
 import fs from 'fs';
 import path from 'path';
 import { Settings, UTF8, completedFolder } from './util';
+import { Logger } from '../logger/Logger';
 
 export interface ITransferServiceProps {
   Bucket: string;
@@ -28,9 +29,10 @@ export class TransferService {
   private client: S3Client;
   private clientCredential: ICredential;
 
-  constructor() {
-    this.clientCredential = this.readCredentials();
-    console.log(this.clientCredential);
+  constructor(credentials: ICredential) {
+    this.clientCredential = credentials;
+    //this.clientCredential = this.readCredentials();
+    Logger.log(JSON.stringify(this.clientCredential, null, 2));
 
     this.client = new S3Client({
       region: this.clientCredential.region,
