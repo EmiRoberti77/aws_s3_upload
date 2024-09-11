@@ -1,8 +1,8 @@
 # aws_s3_upload
 
-
-this project loads a setting.json file in the root directory of the server.js file once compiled 
-
+- this project loads a setting.json file in the root directory of the server.js file once compiled
+- 
+```json
 {
   "accesskey": "<ramdonkey>",
   "secretkey": "<ramdonkey>",
@@ -12,3 +12,4 @@ this project loads a setting.json file in the root directory of the server.js fi
   "bucket": "<bucketname>",
   "folder": "<foldername>"
 }
+```
